@@ -2,6 +2,8 @@
 
 <Configuration>
 	<FilterNodes>
+		<!--
+			now eidtor use all nodes!
 		<node FullName="PluginBehaviac.Nodes.Query" />
 		<node FullName="PluginBehaviac.Nodes.DecoratorLog" />
 		<node FullName="PluginBehaviac.Nodes.DecoratorAlwaysRunning" />
@@ -9,6 +11,7 @@
 		<node FullName="PluginBehaviac.Nodes.DecoratorAlwaysSuccess" />
 		<node FullName="PluginBehaviac.Nodes.Task" />
 		<node FullName="PluginBehaviac.Nodes.Method" />
+	-->
     </FilterNodes>
 	<Themes>
 		<theme Name="Modern">

@@ -2258,8 +2258,10 @@ namespace Behaviac.Design
         {
             get
             {
+            	//filter by xml
+            	return FilterNodes.Contains("PluginBehaviac.Nodes.Query");
                 //only filter query not in vc
-                return !System.Diagnostics.Debugger.IsAttached && FilterNodes.Contains("PluginBehaviac.Nodes.Query");
+                // return !System.Diagnostics.Debugger.IsAttached && FilterNodes.Contains("PluginBehaviac.Nodes.Query");
             }
         }
 
