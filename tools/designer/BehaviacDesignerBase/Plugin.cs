@@ -1094,11 +1094,11 @@ namespace Behaviac.Design
         private static List<InstanceName_t> _instanceNames = new List<InstanceName_t>();
         public static List<InstanceName_t> InstanceNames
         {
-            get 
+            get
             {
                 Debug.Check(_instanceNames != null) ;
 
-                return _instanceNames; 
+                return _instanceNames;
             }
         }
 
@@ -1237,7 +1237,7 @@ namespace Behaviac.Design
             foreach (AgentType at in _agentTypes)
             {
                 if (at.AgentTypeName == typeName
-#if BEHAVIAC_NAMESPACE_FIX                    
+#if BEHAVIAC_NAMESPACE_FIX
                     || at.AgentTypeName.EndsWith(typeName)
 #endif
                     )
@@ -1329,7 +1329,7 @@ namespace Behaviac.Design
         {
             get { return ms_namesInNamespace; }
         }
- 
+
         public static string GetNativeTypeName(Type type, bool bForDisplay = false)
         {
             if (type == null)
@@ -1346,35 +1346,35 @@ namespace Behaviac.Design
 
         static Dictionary<string, string> ms_type_mapping = new Dictionary<string, string>()
         {
-                {"Boolean"          , "bool"}, 
-                {"System.Boolean"   , "bool"}, 
-                {"Int32"            , "int"}, 
-                {"System.Int32"     , "int"}, 
-                {"UInt32"           , "uint"}, 
-                {"System.UInt32"    , "uint"}, 
-                {"Int16"            , "short"}, 
-                {"System.Int16"     , "short"}, 
-                {"UInt16"           , "ushort"}, 
-                {"System.UInt16"    , "ushort"}, 
-                {"Int8"             , "sbyte"}, 
-                {"System.Int8"      , "sbyte"}, 
-                {"SByte"            , "sbyte"}, 
+                {"Boolean"          , "bool"},
+                {"System.Boolean"   , "bool"},
+                {"Int32"            , "int"},
+                {"System.Int32"     , "int"},
+                {"UInt32"           , "uint"},
+                {"System.UInt32"    , "uint"},
+                {"Int16"            , "short"},
+                {"System.Int16"     , "short"},
+                {"UInt16"           , "ushort"},
+                {"System.UInt16"    , "ushort"},
+                {"Int8"             , "sbyte"},
+                {"System.Int8"      , "sbyte"},
+                {"SByte"            , "sbyte"},
                 {"System.SByte"     , "sbyte"},
-                {"UInt8"            , "ubyte"}, 
-                {"System.UInt8"     , "ubyte"}, 
-                {"Byte"             , "ubyte"}, 
-                {"System.Byte"      , "ubyte"}, 
-                {"Char"             , "char"}, 
-                {"Int64"            , "long"}, 
-                {"System.Int64"     , "long"}, 
-                {"UInt64"           , "ulong"}, 
-                {"System.UInt64"    , "ulong"}, 
-                {"Single"           , "float"}, 
-                {"System.Single"    , "float"}, 
-                {"Double"           , "double"}, 
-                {"System.Double"    , "double"}, 
-                {"String"           , "string"}, 
-                {"System.String"    , "string"}, 
+                {"UInt8"            , "ubyte"},
+                {"System.UInt8"     , "ubyte"},
+                {"Byte"             , "ubyte"},
+                {"System.Byte"      , "ubyte"},
+                {"Char"             , "char"},
+                {"Int64"            , "long"},
+                {"System.Int64"     , "long"},
+                {"UInt64"           , "ulong"},
+                {"System.UInt64"    , "ulong"},
+                {"Single"           , "float"},
+                {"System.Single"    , "float"},
+                {"Double"           , "double"},
+                {"System.Double"    , "double"},
+                {"String"           , "string"},
+                {"System.String"    , "string"},
                 {"Void"             , "void"}
         };
 
@@ -1383,7 +1383,7 @@ namespace Behaviac.Design
         {
             if (string.IsNullOrEmpty(typeName))
                 return string.Empty;
-            
+
             foreach (KeyValuePair<string, string> pair in ms_type_mapping)
             {
                 if (pair.Key == typeName)
@@ -1585,7 +1585,7 @@ namespace Behaviac.Design
             }
             else
             {
-                
+
                 bCompatible = Plugin.IsAgentDerived(typeToFilter.Name, filterType.Name);
             }
 
@@ -2099,6 +2099,11 @@ namespace Behaviac.Design
 
                 MethodInfo method = typeHandler.GetMethod("DefaultValue");
                 Debug.Check(method != null);
+
+				if (typeHandler.FullName == "XMLPluginBehaviac.behaviac_EBTStatusTypeHandler" && defaultValue == "")
+				{
+					defaultValue = "BT_SUCCESS";
+				}
 
                 object[] pars = { defaultValue };
 
